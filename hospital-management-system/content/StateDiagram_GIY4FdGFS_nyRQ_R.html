@@ -1,0 +1,367 @@
+<html>
+<head>
+	<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" href="report.css" type="text/css"/>
+	<title>State Machine Diagram - State Machine Diagram1</title>
+	<script type="text/javascript" src="report.js"></script>
+	<script type="text/javascript" src="link_popup.js"></script>
+	<script type="text/javascript" src="tooltip.js"></script>
+</head>
+<body style="margin-left: 10px; margin-right: 10px; margin-top: 10px; margin-bottom: 10px;" onload="initPage();initDiagram();initGridDiagram();">
+	<div style="position:absolute; z-index:2; visibility:hidden;border-top: 2px #FF0000 solid;" id="spotlight_top">
+	</div>
+	<div style="position:absolute; z-index:2; visibility:hidden;border-top: 2px #FF0000 solid;" id="spotlight_bottom">
+	</div>
+	<div style="position:absolute; z-index:2; visibility:hidden;border-left: 2px #FF0000 solid;" id="spotlight_left">
+	</div>
+	<div style="position:absolute; z-index:2; visibility:hidden;border-left: 2px #FF0000 solid;" id="spotlight_right">
+	</div>
+	<canvas width="100" style="position:absolute; z-index:2; visibility:hidden" id="spotlight_c" height="100">
+	</canvas>
+	<div style="position:absolute; width:100px; height:100px; z-index:1; visibility:hidden" id="spotLightResourcesTop">
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tr>
+				<td>
+<a href="#top"><img style="border:none" src="../images/icons/BackToTop.gif" alt="Back to top"/></a>				</td>
+				<td>
+<a href="javascript:clearSpotLightFromOpenSpecButton();"><img style="border:none" src="../images/icons/OpenSpecification.gif" alt="Open specification"/></a>				</td>
+			</tr>
+		</table>
+	</div>
+	<div style="position:absolute; width:100px; height:100px; z-index:1; visibility:hidden" id="spotLightResourcesRight">
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tr>
+				<td>
+<a href="#top"><img style="border:none" src="../images/icons/BackToTop.gif" alt="Back to top"/></a>				</td>
+			</tr>
+			<tr>
+				<td>
+<a href="javascript:clearSpotLightFromOpenSpecButton();"><img style="border:none" src="../images/icons/OpenSpecification.gif" alt="Open specification"/></a>				</td>
+			</tr>
+		</table>
+	</div>
+	<div style="position:absolute;z-index:4;visibility:hidden" id="linkPopupMenuLayer">
+		<table border="0" width="100%" style="border-style:solid; border-width:1px; border-color:#000000; background:#FFFFFF; width:250px" id="linkPopupMenuTable">
+		</table>
+	</div>
+	<div style="position:absolute; z-index:1; visibility:hidden; " id="referenceIconLayer">
+		<table border="0" cellpadding="3" cellspacing="0" style="font-size:1;">
+			<tr>
+				<td>
+					<img src="../images/icons/Ref.gif" style="border:none" onclick="movePopupPositionToReferenceIconPosition();resetPopupForReference();switchPopupShowHideStatus();" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div style="position:absolute; z-index:1; visibility:hidden; " id="subdiagramIconLayer">
+		<table border="0" cellpadding="3" cellspacing="0" style="font-size:1;">
+			<tr>
+				<td>
+					<img src="../images/icons/Subdiagram.gif" style="border:none" onclick="movePopupPositionToSubdiagramIconPosition();resetPopupForSubdiagram();switchPopupShowHideStatus();" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div style="position:absolute; z-index:1; visibility:hidden; " id="transitorIconLayer">
+		<table border="0" cellpadding="3" cellspacing="0" style="font-size:1;">
+			<tr>
+				<td>
+					<img src="../images/icons/Transitor.gif" style="border:none" onclick="movePopupPositionToTransitorIconPosition();resetPopupForTransitor();switchPopupShowHideStatus();" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div style="position:absolute; z-index:1; visibility:hidden; " id="documentationIconLayer">
+		<table border="0" cellpadding="3" cellspacing="0" style="font-size:1;">
+			<tr>
+				<td>
+					<img src="../images/icons/Documentation.png" style="border:none" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="HeaderText">
+		hospital-management-system	</div>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="HeaderLine1">
+			</td>
+		</tr>
+		<tr>
+			<td class="HeaderLine2">
+			</td>
+		</tr>
+		<tr>
+			<td class="HeaderLine3">
+			</td>
+		</tr>
+	</table>
+	<div style="position:absolute; z-index:21; visibility:hidden" id="referencedBys">
+		<table border="0" width="100%" style="border-style:solid; border-width:1px; border-color:#000000; background:#FFFFFF; width:250px" id="referencedBysTable">
+		</table>
+	</div>
+	<div style="position:absolute; z-index:21; visibility:hidden" id="vplink">
+		<table border="1" cellpadding="0" cellspacing="0" bordercolor="#A9BFD3">
+			<tr>
+				<td>
+					<table border="0" cellpadding="0" width="100%" cellspacing="0">
+						<tr style="background:#DDDDDD">
+							<td style="font-size: 12px;" align="left">
+								<select onchange="vpLinkToggleName()" id="vplink-linkType">
+	<option value="Project Link">Project Link</option>
+	<option value="Page URL">Page URL</option>
+</select>
+							</td>
+							<td style="font-size: 12px;" align="right">
+								<input onclick="javascript: vpLinkToggleName()" id="vplink-checkbox" type="checkbox" />
+								<label for="vplink-checkbox">with Name</label>							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<textarea id="vplink-text" style="width: 348px; height: 60px; border-color: #7EADD9; outline: none;"></textarea>				</td>
+			</tr>
+		</table>
+	</div>
+	<p class="PageTitle">
+		<span id="PageTitleText">
+			State Machine Diagram - State Machine Diagram1		</span>
+<a onclick="javascript: showVpLink('hospital-management-system.vpp://diagram/GIY4FdGFS_nyRQ.R', 'State Machine Diagram1\nhospital-management-system.vpp://diagram/GIY4FdGFS_nyRQ.R', 'State Machine Diagram1', this); return false;" style="padding-left: 16px; font-size: 12px" href="#"><img src="../images/icons/link.png" border="0"> link</a>	</p>
+	<div style="position: relative; padding-bottom: 20px;">
+		<table border="0" cellpadding="0" width="100%" cellspacing="0" style="position: absolute; top: 0; left: 0; z-index: 20;" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),hideLinkPopup(),hideReferencedBys();">
+			<tr>
+				<td>
+<span class="TableContent">Jump to:</span>					<select id="SelectShape" class="TableContent" onChange="scrollWin('diagram', this.value);hideLinkPopup();showSpotLight('diagram', this.value)">
+<option value="">Please select a model element</option>
+<option value="shape|21.0|295.0|20.0|20.0|FinalState2_XdVcFdGFS_nyRRFg.html|FinalState2_XdVcFdGFS_nyRRFg.html|ndVcFdGFS_nyRRFf" id="optionndVcFdGFS_nyRRFf">end : Final State</option>
+<option value="shape|122.0|48.0|121.0|40.0|State2_QinUFdGFS_nyRRBg.html|State2_QinUFdGFS_nyRRBg.html|QinUFdGFS_nyRRBf" id="optionQinUFdGFS_nyRRBf">halaman informasi pembayaran tagihan : State</option>
+<option value="shape|525.0|326.0|112.0|40.0|State2_3YtUFdGFS_nyRRBH.html|State2_3YtUFdGFS_nyRRBH.html|3YtUFdGFS_nyRRBG" id="option3YtUFdGFS_nyRRBG">halaman informasi jadwal temu : State</option>
+<option value="shape|149.0|428.0|93.0|40.0|State2_inpUFdGFS_nyRRA2.html|State2_inpUFdGFS_nyRRA2.html|4npUFdGFS_nyRRA1" id="option4npUFdGFS_nyRRA1">halaman informasi obat : State</option>
+<option value="shape|437.0|48.0|113.0|40.0|State2_xAKUFdGFS_nyRRAd.html|State2_xAKUFdGFS_nyRRAd.html|mAKUFdGFS_nyRRAc" id="optionmAKUFdGFS_nyRRAc">halaman informasi ruangan : State</option>
+<option value="shape|525.0|161.0|111.0|40.0|State2_KgUUFdGFS_nyRRAM.html|State2_KgUUFdGFS_nyRRAM.html|KgUUFdGFS_nyRRAL" id="optionKgUUFdGFS_nyRRAL">halaman informasi dokter : State</option>
+<option value="shape|437.0|447.0|105.0|40.0|State2_MAfkFdGFS_nyRQ_z.html|State2_MAfkFdGFS_nyRQ_z.html|MAfkFdGFS_nyRQ_y" id="optionMAfkFdGFS_nyRQ_y">halaman informasi pasien : State</option>
+<option value="shape|285.0|234.0|80.0|40.0|State2_QHIEFdGFS_nyRQ_x.html|State2_QHIEFdGFS_nyRQ_x.html|QHIEFdGFS_nyRQ.w" id="optionQHIEFdGFS_nyRQ.w">halaman utama HMS : State</option>
+<option value="shape|21.0|191.0|20.0|20.0|InitialPseudoState_pCY4FdGFS_nyRQ_g.html|InitialPseudoState_pCY4FdGFS_nyRQ_g.html|pCY4FdGFS_nyRQ.f" id="optionpCY4FdGFS_nyRQ.f">start : Initial Pseudo State</option>
+</select>				</td>
+			</tr>
+		</table>
+		<table border="0" cellpadding="0" width="100%" cellspacing="0" style="position: relative; top: 24;">
+			<tr>
+				<td>
+					<img id="diagram" src="../images/State_Machine_Diagram1.png" usemap="#diagram_map" class="Image" width="871" height="580"/>
+					<map name="diagram_map">
+<area imageId="diagram" coords="41.0, 197.38583, 41.0, 197.38583, 41.0, 197.38583, 41.0, 197.38583, 41.0, 197.38583, 41.0, 211.0, 36.860466, 211.0, 138.0, 245.2441, 138.0, 249.0, 149.09302, 249.0, 155.0, 251.0, 155.42857, 249.0, 285.0, 249.0, 285.0, 235.0, 152.09302, 235.0, 41.0, 197.38583" coords2="41.0, 197.38583, 41.0, 197.38583, 41.0, 197.38583, 41.0, 197.38583, 41.0, 197.38583, 41.0, 211.0, 36.860466, 211.0, 138.0, 245.2441, 138.0, 249.0, 149.09302, 249.0, 155.0, 251.0, 155.42857, 249.0, 285.0, 249.0, 285.0, 235.0, 152.09302, 235.0, 41.0, 197.38583" shape="poly" alt="Login:Transition" id="areadiagram_map_oqNkFdGFS_nyRQ_g_default" href="Transition2_3KNkFdGFS_nyRQ_f.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="338.0, 274.0, 338.0, 393.125, 333.0, 400.0, 338.0, 403.59814, 338.0, 403.59814, 338.0, 410.0, 346.89612, 410.0, 437.0, 474.84113, 437.0, 474.84113, 437.0, 458.0841, 352.0, 396.9159, 352.0, 274.0" coords2="338.0, 274.0, 338.0, 393.125, 333.0, 400.0, 338.0, 403.59814, 338.0, 403.59814, 338.0, 410.0, 346.89612, 410.0, 437.0, 474.84113, 437.0, 474.84113, 437.0, 458.0841, 352.0, 396.9159, 352.0, 274.0" shape="poly" alt="klik Patient:Transition" id="areadiagram_map_mRW0FdGFS_nyRRCe_default" href="Transition2_URW0FdGFS_nyRRCd.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="298.0, 274.0, 298.0, 397.34177, 242.0, 438.4557, 242.0, 438.4557, 242.0, 455.3291, 242.0, 455.3291, 302.3793, 411.0, 312.0, 411.0, 312.0, 403.9367, 316.0, 401.0, 312.0, 395.5, 312.0, 274.0" coords2="298.0, 274.0, 298.0, 397.34177, 242.0, 438.4557, 242.0, 438.4557, 242.0, 455.3291, 242.0, 455.3291, 302.3793, 411.0, 312.0, 411.0, 312.0, 403.9367, 316.0, 401.0, 312.0, 395.5, 312.0, 274.0" shape="poly" alt="klik Medication:Transition" id="areadiagram_map_cN20FdGFS_nyRRCi_default" href="Transition2_gN20FdGFS_nyRRCh.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="442.0, 167.0, 436.52942, 171.0, 429.0, 171.0, 429.0, 176.50537, 350.36765, 234.0, 365.0, 234.0, 365.0, 240.15054, 365.0, 240.15054, 440.42648, 185.0, 525.0, 185.0, 525.0, 171.0, 444.9091, 171.0, 442.0, 167.0" coords2="442.0, 167.0, 436.52942, 171.0, 429.0, 171.0, 429.0, 176.50537, 350.36765, 234.0, 365.0, 234.0, 365.0, 240.15054, 365.0, 240.15054, 440.42648, 185.0, 525.0, 185.0, 525.0, 171.0, 444.9091, 171.0, 442.0, 167.0" shape="poly" alt="klik Doctor:Transition" id="areadiagram_map_MNO0FdGFS_nyRRCm_default" href="Transition2_ANO0FdGFS_nyRRCl.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="365.0, 263.91013, 365.0, 274.0, 355.09195, 274.0, 429.0, 346.2472, 429.0, 353.0, 435.90805, 353.0, 440.0, 357.0, 444.0, 353.0, 525.0, 353.0, 525.0, 339.0, 441.8161, 339.0, 365.0, 263.91013" coords2="365.0, 263.91013, 365.0, 274.0, 355.09195, 274.0, 429.0, 346.2472, 429.0, 353.0, 435.90805, 353.0, 440.0, 357.0, 444.0, 353.0, 525.0, 353.0, 525.0, 339.0, 441.8161, 339.0, 365.0, 263.91013" shape="poly" alt="klik Appointment:Transition" id="areadiagram_map_WRu0FdGFS_nyRRCq_default" href="Transition2_MRu0FdGFS_nyRRCp.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="243.0, 60.44156, 243.0, 76.94805, 297.0, 114.11688, 297.0, 234.0, 311.0, 234.0, 311.0, 115.5, 315.0, 110.0, 311.0, 107.24675, 311.0, 101.0, 301.92453, 101.0, 243.0, 60.44156" coords2="243.0, 60.44156, 243.0, 76.94805, 297.0, 114.11688, 297.0, 234.0, 311.0, 234.0, 311.0, 115.5, 315.0, 110.0, 311.0, 107.24675, 311.0, 101.0, 301.92453, 101.0, 243.0, 60.44156" shape="poly" alt="klik Billing:Transition" id="areadiagram_map_sue0FdGFS_nyRRCu_default" href="Transition2_wue0FdGFS_nyRRCt.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="437.0, 59.756756, 347.2353, 101.0, 337.0, 101.0, 337.0, 105.702705, 332.0, 108.0, 337.0, 121.0, 337.0, 234.0, 351.0, 234.0, 351.0, 114.567566, 437.0, 75.054054, 437.0, 59.756756" coords2="437.0, 59.756756, 347.2353, 101.0, 337.0, 101.0, 337.0, 105.702705, 332.0, 108.0, 337.0, 121.0, 337.0, 234.0, 351.0, 234.0, 351.0, 114.567566, 437.0, 75.054054, 437.0, 59.756756" shape="poly" alt="klik Room:Transition" id="areadiagram_map_dy.0FdGFS_nyRRCy_default" href="Transition2_By_0FdGFS_nyRRCx.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="154.0, 249.0, 145.95744, 252.0, 137.0, 252.0, 137.0, 255.34126, 137.0, 255.34126, 30.680851, 295.0, 41.0, 295.0, 41.0, 306.26984, 41.0, 306.26984, 148.95744, 266.0, 285.0, 266.0, 285.0, 252.0, 154.64285, 252.0, 154.0, 249.0" coords2="154.0, 249.0, 145.95744, 252.0, 137.0, 252.0, 137.0, 255.34126, 137.0, 255.34126, 30.680851, 295.0, 41.0, 295.0, 41.0, 306.26984, 41.0, 306.26984, 148.95744, 266.0, 285.0, 266.0, 285.0, 252.0, 154.64285, 252.0, 154.0, 249.0" shape="poly" alt="Log out:Transition" id="areadiagram_map_4Wy8FdGFS_nyRRHP_default" href="Transition2_nmy8FdGFS_nyRRHO.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="590.0, 366.0, 590.0, 460.0, 542.0, 460.0, 542.0, 474.0, 590.0, 474.0, 590.0, 477.0, 604.0, 477.0, 604.0, 474.0, 607.0, 474.0, 607.0, 460.0, 604.0, 460.0, 604.0, 366.0" coords2="590.0, 366.0, 590.0, 460.0, 542.0, 460.0, 542.0, 474.0, 590.0, 474.0, 590.0, 477.0, 604.0, 477.0, 604.0, 474.0, 607.0, 474.0, 607.0, 460.0, 604.0, 460.0, 604.0, 366.0" shape="poly" alt="klik info appointment:Transition" id="areadiagram_map_5_3CFdGFS_nyRRJB_default" href="Transition2_G_3CFdGFS_nyRRJA.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="590.0, 201.0, 590.0, 326.0, 604.0, 326.0, 604.0, 201.0" coords2="590.0, 201.0, 590.0, 326.0, 604.0, 326.0, 604.0, 201.0" shape="poly" alt="klik lihat appointment:Transition" id="areadiagram_map_EX0SFdGFS_nyRRLf_default" href="Transition2_nn0SFdGFS_nyRRLe.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="719.0, 58.0, 719.0, 61.0, 550.0, 61.0, 550.0, 75.0, 719.0, 75.0, 719.0, 530.0, 509.0, 530.0, 509.0, 487.0, 495.0, 487.0, 495.0, 530.0, 492.0, 530.0, 492.0, 544.0, 495.0, 544.0, 495.0, 547.0, 509.0, 547.0, 509.0, 544.0, 719.0, 544.0, 719.0, 547.0, 733.0, 547.0, 733.0, 544.0, 736.0, 544.0, 736.0, 530.0, 733.0, 530.0, 733.0, 75.0, 736.0, 75.0, 736.0, 61.0, 733.0, 61.0, 733.0, 58.0" coords2="719.0, 58.0, 719.0, 61.0, 550.0, 61.0, 550.0, 75.0, 719.0, 75.0, 719.0, 530.0, 509.0, 530.0, 509.0, 487.0, 495.0, 487.0, 495.0, 530.0, 492.0, 530.0, 492.0, 544.0, 495.0, 544.0, 495.0, 547.0, 509.0, 547.0, 509.0, 544.0, 719.0, 544.0, 719.0, 547.0, 733.0, 547.0, 733.0, 544.0, 736.0, 544.0, 736.0, 530.0, 733.0, 530.0, 733.0, 75.0, 736.0, 75.0, 736.0, 61.0, 733.0, 61.0, 733.0, 58.0" shape="poly" alt="klik info ruangan:Transition" id="areadiagram_map_XbGSFdGFS_nyRRLr_default" href="Transition2_dbGSFdGFS_nyRRLq.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="165.0, -8.0, 165.0, -5.0, 162.0, -5.0, 162.0, 9.0, 165.0, 9.0, 165.0, 48.0, 179.0, 48.0, 179.0, 9.0, 803.0, 9.0, 803.0, 564.0, 490.0, 564.0, 490.0, 487.0, 476.0, 487.0, 476.0, 564.0, 473.0, 564.0, 473.0, 578.0, 476.0, 578.0, 476.0, 581.0, 490.0, 581.0, 490.0, 578.0, 803.0, 578.0, 803.0, 581.0, 817.0, 581.0, 817.0, 578.0, 820.0, 578.0, 820.0, 564.0, 817.0, 564.0, 817.0, 9.0, 820.0, 9.0, 820.0, -5.0, 817.0, -5.0, 817.0, -8.0, 803.0, -8.0, 803.0, -5.0, 179.0, -5.0, 179.0, -8.0" coords2="165.0, -8.0, 165.0, -5.0, 162.0, -5.0, 162.0, 9.0, 165.0, 9.0, 165.0, 48.0, 179.0, 48.0, 179.0, 9.0, 803.0, 9.0, 803.0, 564.0, 490.0, 564.0, 490.0, 487.0, 476.0, 487.0, 476.0, 564.0, 473.0, 564.0, 473.0, 578.0, 476.0, 578.0, 476.0, 581.0, 490.0, 581.0, 490.0, 578.0, 803.0, 578.0, 803.0, 581.0, 817.0, 581.0, 817.0, 578.0, 820.0, 578.0, 820.0, 564.0, 817.0, 564.0, 817.0, 9.0, 820.0, 9.0, 820.0, -5.0, 817.0, -5.0, 817.0, -8.0, 803.0, -8.0, 803.0, -5.0, 179.0, -5.0, 179.0, -8.0" shape="poly" alt="klik info tagihan:Transition" id="areadiagram_map_PljSFdGFS_nyRRMU_default" href="Transition2_DljSFdGFS_nyRRMT.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="189.0, 468.0, 189.0, 537.0, 186.0, 537.0, 186.0, 551.0, 189.0, 551.0, 189.0, 554.0, 203.0, 554.0, 203.0, 551.0, 451.0, 551.0, 451.0, 554.0, 465.0, 554.0, 465.0, 551.0, 468.0, 551.0, 468.0, 537.0, 465.0, 537.0, 465.0, 487.0, 451.0, 487.0, 451.0, 537.0, 203.0, 537.0, 203.0, 468.0" coords2="189.0, 468.0, 189.0, 537.0, 186.0, 537.0, 186.0, 551.0, 189.0, 551.0, 189.0, 554.0, 203.0, 554.0, 203.0, 551.0, 451.0, 551.0, 451.0, 554.0, 465.0, 554.0, 465.0, 551.0, 468.0, 551.0, 468.0, 537.0, 465.0, 537.0, 465.0, 487.0, 451.0, 487.0, 451.0, 537.0, 203.0, 537.0, 203.0, 468.0" shape="poly" alt="klik info resep:Transition" id="areadiagram_map_.VwyFdGFS_nyRRM0_default" href="Transition2_KVwyFdGFS_nyRRMz.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="109.0, 378.0, 109.0, 381.0, 106.0, 381.0, 106.0, 395.0, 109.0, 395.0, 109.0, 441.0, 106.0, 441.0, 106.0, 455.0, 109.0, 455.0, 109.0, 458.0, 123.0, 458.0, 123.0, 455.0, 149.0, 455.0, 149.0, 441.0, 123.0, 441.0, 123.0, 395.0, 199.0, 395.0, 199.0, 428.0, 213.0, 428.0, 213.0, 395.0, 216.0, 395.0, 216.0, 381.0, 213.0, 381.0, 213.0, 378.0, 199.0, 378.0, 199.0, 381.0, 123.0, 381.0, 123.0, 378.0" coords2="109.0, 378.0, 109.0, 381.0, 106.0, 381.0, 106.0, 395.0, 109.0, 395.0, 109.0, 441.0, 106.0, 441.0, 106.0, 455.0, 109.0, 455.0, 109.0, 458.0, 123.0, 458.0, 123.0, 455.0, 149.0, 455.0, 149.0, 441.0, 123.0, 441.0, 123.0, 395.0, 199.0, 395.0, 199.0, 428.0, 213.0, 428.0, 213.0, 395.0, 216.0, 395.0, 216.0, 381.0, 213.0, 381.0, 213.0, 378.0, 199.0, 378.0, 199.0, 381.0, 123.0, 381.0, 123.0, 378.0" shape="poly" alt="add resep:Transition" id="areadiagram_map_drGyFdGFS_nyRRNE_default" href="Transition2_WrGyFdGFS_nyRRND.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="86.0, 58.0, 86.0, 61.0, 83.0, 61.0, 83.0, 75.0, 86.0, 75.0, 86.0, 125.0, 83.0, 125.0, 83.0, 139.0, 86.0, 139.0, 86.0, 142.0, 100.0, 142.0, 100.0, 139.0, 185.0, 139.0, 185.0, 142.0, 199.0, 142.0, 199.0, 139.0, 202.0, 139.0, 202.0, 125.0, 199.0, 125.0, 199.0, 88.0, 185.0, 88.0, 185.0, 125.0, 100.0, 125.0, 100.0, 75.0, 122.0, 75.0, 122.0, 61.0, 100.0, 61.0, 100.0, 58.0" coords2="86.0, 58.0, 86.0, 61.0, 83.0, 61.0, 83.0, 75.0, 86.0, 75.0, 86.0, 125.0, 83.0, 125.0, 83.0, 139.0, 86.0, 139.0, 86.0, 142.0, 100.0, 142.0, 100.0, 139.0, 185.0, 139.0, 185.0, 142.0, 199.0, 142.0, 199.0, 139.0, 202.0, 139.0, 202.0, 125.0, 199.0, 125.0, 199.0, 88.0, 185.0, 88.0, 185.0, 125.0, 100.0, 125.0, 100.0, 75.0, 122.0, 75.0, 122.0, 61.0, 100.0, 61.0, 100.0, 58.0" shape="poly" alt="add tagihan:Transition" id="areadiagram_map_zweyFdGFS_nyRRNO_default" href="Transition2_pweyFdGFS_nyRRNN.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="492.0, 397.0, 492.0, 400.0, 489.0, 400.0, 489.0, 414.0, 492.0, 414.0, 492.0, 447.0, 506.0, 447.0, 506.0, 414.0, 572.0, 414.0, 572.0, 449.0, 542.0, 449.0, 542.0, 463.0, 572.0, 463.0, 572.0, 466.0, 586.0, 466.0, 586.0, 463.0, 589.0, 463.0, 589.0, 449.0, 586.0, 449.0, 586.0, 414.0, 589.0, 414.0, 589.0, 400.0, 586.0, 400.0, 586.0, 397.0, 572.0, 397.0, 572.0, 400.0, 506.0, 400.0, 506.0, 397.0" coords2="492.0, 397.0, 492.0, 400.0, 489.0, 400.0, 489.0, 414.0, 492.0, 414.0, 492.0, 447.0, 506.0, 447.0, 506.0, 414.0, 572.0, 414.0, 572.0, 449.0, 542.0, 449.0, 542.0, 463.0, 572.0, 463.0, 572.0, 466.0, 586.0, 466.0, 586.0, 463.0, 589.0, 463.0, 589.0, 449.0, 586.0, 449.0, 586.0, 414.0, 589.0, 414.0, 589.0, 400.0, 586.0, 400.0, 586.0, 397.0, 572.0, 397.0, 572.0, 400.0, 506.0, 400.0, 506.0, 397.0" shape="poly" alt="add pasien:Transition" id="areadiagram_map_VrxyFdGFS_nyRRNY_default" href="Transition2_erxyFdGFS_nyRRNX.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="620.0, 284.0, 620.0, 287.0, 617.0, 287.0, 617.0, 301.0, 620.0, 301.0, 620.0, 326.0, 634.0, 326.0, 634.0, 301.0, 670.0, 301.0, 670.0, 338.0, 637.0, 338.0, 637.0, 352.0, 670.0, 352.0, 670.0, 355.0, 684.0, 355.0, 684.0, 352.0, 687.0, 352.0, 687.0, 338.0, 684.0, 338.0, 684.0, 301.0, 687.0, 301.0, 687.0, 287.0, 684.0, 287.0, 684.0, 284.0, 670.0, 284.0, 670.0, 287.0, 634.0, 287.0, 634.0, 284.0" coords2="620.0, 284.0, 620.0, 287.0, 617.0, 287.0, 617.0, 301.0, 620.0, 301.0, 620.0, 326.0, 634.0, 326.0, 634.0, 301.0, 670.0, 301.0, 670.0, 338.0, 637.0, 338.0, 637.0, 352.0, 670.0, 352.0, 670.0, 355.0, 684.0, 355.0, 684.0, 352.0, 687.0, 352.0, 687.0, 338.0, 684.0, 338.0, 684.0, 301.0, 687.0, 301.0, 687.0, 287.0, 684.0, 287.0, 684.0, 284.0, 670.0, 284.0, 670.0, 287.0, 634.0, 287.0, 634.0, 284.0" shape="poly" alt="add appointment:Transition" id="areadiagram_map_M5dyFdGFS_nyRRNo_default" href="Transition2__ZdyFdGFS_nyRRNn.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="584.0, 111.0, 584.0, 114.0, 581.0, 114.0, 581.0, 128.0, 584.0, 128.0, 584.0, 161.0, 598.0, 161.0, 598.0, 128.0, 670.0, 128.0, 670.0, 174.0, 636.0, 174.0, 636.0, 188.0, 670.0, 188.0, 670.0, 191.0, 684.0, 191.0, 684.0, 188.0, 687.0, 188.0, 687.0, 174.0, 684.0, 174.0, 684.0, 128.0, 687.0, 128.0, 687.0, 114.0, 684.0, 114.0, 684.0, 111.0, 670.0, 111.0, 670.0, 114.0, 598.0, 114.0, 598.0, 111.0" coords2="584.0, 111.0, 584.0, 114.0, 581.0, 114.0, 581.0, 128.0, 584.0, 128.0, 584.0, 161.0, 598.0, 161.0, 598.0, 128.0, 670.0, 128.0, 670.0, 174.0, 636.0, 174.0, 636.0, 188.0, 670.0, 188.0, 670.0, 191.0, 684.0, 191.0, 684.0, 188.0, 687.0, 188.0, 687.0, 174.0, 684.0, 174.0, 684.0, 128.0, 687.0, 128.0, 687.0, 114.0, 684.0, 114.0, 684.0, 111.0, 670.0, 111.0, 670.0, 114.0, 598.0, 114.0, 598.0, 111.0" shape="poly" alt="add dokter:Transition" id="areadiagram_map_PkXyFdGFS_nyRRN._default" href="Transition2_5kXyFdGFS_nyRRN9.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="454.0, 88.0, 454.0, 114.0, 451.0, 114.0, 451.0, 128.0, 454.0, 128.0, 454.0, 131.0, 468.0, 131.0, 468.0, 128.0, 496.0, 128.0, 496.0, 131.0, 510.0, 131.0, 510.0, 128.0, 513.0, 128.0, 513.0, 114.0, 510.0, 114.0, 510.0, 88.0, 496.0, 88.0, 496.0, 114.0, 468.0, 114.0, 468.0, 88.0" coords2="454.0, 88.0, 454.0, 114.0, 451.0, 114.0, 451.0, 128.0, 454.0, 128.0, 454.0, 131.0, 468.0, 131.0, 468.0, 128.0, 496.0, 128.0, 496.0, 131.0, 510.0, 131.0, 510.0, 128.0, 513.0, 128.0, 513.0, 114.0, 510.0, 114.0, 510.0, 88.0, 496.0, 88.0, 496.0, 114.0, 468.0, 114.0, 468.0, 88.0" shape="poly" alt="add status:Transition" id="areadiagram_map_mDfyFdGFS_nyRROE_default" href="Transition2_UDfyFdGFS_nyRROD.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="21, 295, 41, 315" coords2="21, 295, 41, 315" shape="rect" alt="end:Final State" id="areadiagram_map_ndVcFdGFS_nyRRFf_default" href="FinalState2_XdVcFdGFS_nyRRFg.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="122, 48, 243, 88" coords2="122, 48, 243, 88" shape="rect" alt="halaman informasi pembayaran tagihan:State" id="areadiagram_map_QinUFdGFS_nyRRBf_default" href="State2_QinUFdGFS_nyRRBg.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="525, 326, 637, 366" coords2="525, 326, 637, 366" shape="rect" alt="halaman informasi jadwal temu:State" id="areadiagram_map_3YtUFdGFS_nyRRBG_default" href="State2_3YtUFdGFS_nyRRBH.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="149, 428, 242, 468" coords2="149, 428, 242, 468" shape="rect" alt="halaman informasi obat:State" id="areadiagram_map_4npUFdGFS_nyRRA1_default" href="State2_inpUFdGFS_nyRRA2.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="437, 48, 550, 88" coords2="437, 48, 550, 88" shape="rect" alt="halaman informasi ruangan:State" id="areadiagram_map_mAKUFdGFS_nyRRAc_default" href="State2_xAKUFdGFS_nyRRAd.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="525, 161, 636, 201" coords2="525, 161, 636, 201" shape="rect" alt="halaman informasi dokter:State" id="areadiagram_map_KgUUFdGFS_nyRRAL_default" href="State2_KgUUFdGFS_nyRRAM.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="437, 447, 542, 487" coords2="437, 447, 542, 487" shape="rect" alt="halaman informasi pasien:State" id="areadiagram_map_MAfkFdGFS_nyRQ_y_default" href="State2_MAfkFdGFS_nyRQ_z.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="285, 234, 365, 274" coords2="285, 234, 365, 274" shape="rect" alt="halaman utama HMS:State" id="areadiagram_map_QHIEFdGFS_nyRQ.w_default" href="State2_QHIEFdGFS_nyRQ_x.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="21, 191, 41, 211" coords2="21, 191, 41, 211" shape="rect" alt="start:Initial Pseudo State" id="areadiagram_map_pCY4FdGFS_nyRQ.f_default" href="InitialPseudoState_pCY4FdGFS_nyRQ_g.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+</map>
+				</td>
+			</tr>
+		</table>
+		<p>
+		</p>
+	</div>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="Category">
+				Model Elements			</td>
+		</tr>
+		<tr>
+			<td style="height: 5px">
+			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td colSpan="4" class="TableHeaderLine">
+			</td>
+		</tr>
+		<tr>
+			<td colSpan="4" class="TableHeaderLine1">
+			</td>
+		</tr>
+		<tr class="TableHeader">
+			<td class="TableCellSpaceHolder10Px">
+			</td>
+			<td width="30%">
+<span class="TableHeaderText">Name</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td>
+<span class="TableHeaderText">Description</span>			</td>
+		</tr>
+		<tr>
+			<td colSpan="4" class="TableHeaderLine2">
+			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/FinalState.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/FinalState.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <a href="FinalState2_XdVcFdGFS_nyRRFg.html" class="ItemLink">end : Final State</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/State.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/State.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <a href="State2_QinUFdGFS_nyRRBg.html" class="ItemLink">halaman informasi pembayaran tagihan : State</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/State.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/State.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <a href="State2_3YtUFdGFS_nyRRBH.html" class="ItemLink">halaman informasi jadwal temu : State</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/State.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/State.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <a href="State2_inpUFdGFS_nyRRA2.html" class="ItemLink">halaman informasi obat : State</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/State.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/State.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <a href="State2_xAKUFdGFS_nyRRAd.html" class="ItemLink">halaman informasi ruangan : State</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/State.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/State.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <a href="State2_KgUUFdGFS_nyRRAM.html" class="ItemLink">halaman informasi dokter : State</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/State.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/State.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <a href="State2_MAfkFdGFS_nyRQ_z.html" class="ItemLink">halaman informasi pasien : State</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/State.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/State.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <a href="State2_QHIEFdGFS_nyRQ_x.html" class="ItemLink">halaman utama HMS : State</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/InitialPseudoState.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/InitialPseudoState.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <a href="InitialPseudoState_pCY4FdGFS_nyRQ_g.html" class="ItemLink">start : Initial Pseudo State</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="TableCellSpaceHolder1PxTall">
+			</td>
+		</tr>
+		<tr>
+			<td class="TableFooter">
+			</td>
+		</tr>
+	</table>
+	<div style="height: 20px">
+	</div>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="FooterLine">
+			</td>
+		</tr>
+	</table>
+	<div class="HeaderText">
+		hospital-management-system	</div>
+</body>
+</html>

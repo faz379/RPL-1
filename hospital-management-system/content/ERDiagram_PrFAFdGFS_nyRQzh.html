@@ -1,0 +1,2552 @@
+<html>
+<head>
+	<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" href="report.css" type="text/css"/>
+	<title>Entity Relationship Diagram - Class Diagram1 - ERD</title>
+	<script type="text/javascript" src="report.js"></script>
+	<script type="text/javascript" src="link_popup.js"></script>
+	<script type="text/javascript" src="tooltip.js"></script>
+</head>
+<body style="margin-left: 10px; margin-right: 10px; margin-top: 10px; margin-bottom: 10px;" onload="initPage();initDiagram();initGridDiagram();">
+	<div style="position:absolute; z-index:2; visibility:hidden;border-top: 2px #FF0000 solid;" id="spotlight_top">
+	</div>
+	<div style="position:absolute; z-index:2; visibility:hidden;border-top: 2px #FF0000 solid;" id="spotlight_bottom">
+	</div>
+	<div style="position:absolute; z-index:2; visibility:hidden;border-left: 2px #FF0000 solid;" id="spotlight_left">
+	</div>
+	<div style="position:absolute; z-index:2; visibility:hidden;border-left: 2px #FF0000 solid;" id="spotlight_right">
+	</div>
+	<canvas width="100" style="position:absolute; z-index:2; visibility:hidden" id="spotlight_c" height="100">
+	</canvas>
+	<div style="position:absolute; width:100px; height:100px; z-index:1; visibility:hidden" id="spotLightResourcesTop">
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tr>
+				<td>
+<a href="#top"><img style="border:none" src="../images/icons/BackToTop.gif" alt="Back to top"/></a>				</td>
+				<td>
+<a href="javascript:clearSpotLightFromOpenSpecButton();"><img style="border:none" src="../images/icons/OpenSpecification.gif" alt="Open specification"/></a>				</td>
+			</tr>
+		</table>
+	</div>
+	<div style="position:absolute; width:100px; height:100px; z-index:1; visibility:hidden" id="spotLightResourcesRight">
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tr>
+				<td>
+<a href="#top"><img style="border:none" src="../images/icons/BackToTop.gif" alt="Back to top"/></a>				</td>
+			</tr>
+			<tr>
+				<td>
+<a href="javascript:clearSpotLightFromOpenSpecButton();"><img style="border:none" src="../images/icons/OpenSpecification.gif" alt="Open specification"/></a>				</td>
+			</tr>
+		</table>
+	</div>
+	<div style="position:absolute;z-index:4;visibility:hidden" id="linkPopupMenuLayer">
+		<table border="0" width="100%" style="border-style:solid; border-width:1px; border-color:#000000; background:#FFFFFF; width:250px" id="linkPopupMenuTable">
+		</table>
+	</div>
+	<div style="position:absolute; z-index:1; visibility:hidden; " id="referenceIconLayer">
+		<table border="0" cellpadding="3" cellspacing="0" style="font-size:1;">
+			<tr>
+				<td>
+					<img src="../images/icons/Ref.gif" style="border:none" onclick="movePopupPositionToReferenceIconPosition();resetPopupForReference();switchPopupShowHideStatus();" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div style="position:absolute; z-index:1; visibility:hidden; " id="subdiagramIconLayer">
+		<table border="0" cellpadding="3" cellspacing="0" style="font-size:1;">
+			<tr>
+				<td>
+					<img src="../images/icons/Subdiagram.gif" style="border:none" onclick="movePopupPositionToSubdiagramIconPosition();resetPopupForSubdiagram();switchPopupShowHideStatus();" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div style="position:absolute; z-index:1; visibility:hidden; " id="transitorIconLayer">
+		<table border="0" cellpadding="3" cellspacing="0" style="font-size:1;">
+			<tr>
+				<td>
+					<img src="../images/icons/Transitor.gif" style="border:none" onclick="movePopupPositionToTransitorIconPosition();resetPopupForTransitor();switchPopupShowHideStatus();" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div style="position:absolute; z-index:1; visibility:hidden; " id="documentationIconLayer">
+		<table border="0" cellpadding="3" cellspacing="0" style="font-size:1;">
+			<tr>
+				<td>
+					<img src="../images/icons/Documentation.png" style="border:none" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="HeaderText">
+		hospital-management-system	</div>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="HeaderLine1">
+			</td>
+		</tr>
+		<tr>
+			<td class="HeaderLine2">
+			</td>
+		</tr>
+		<tr>
+			<td class="HeaderLine3">
+			</td>
+		</tr>
+	</table>
+	<div style="position:absolute; z-index:21; visibility:hidden" id="referencedBys">
+		<table border="0" width="100%" style="border-style:solid; border-width:1px; border-color:#000000; background:#FFFFFF; width:250px" id="referencedBysTable">
+		</table>
+	</div>
+	<div style="position:absolute; z-index:21; visibility:hidden" id="vplink">
+		<table border="1" cellpadding="0" cellspacing="0" bordercolor="#A9BFD3">
+			<tr>
+				<td>
+					<table border="0" cellpadding="0" width="100%" cellspacing="0">
+						<tr style="background:#DDDDDD">
+							<td style="font-size: 12px;" align="left">
+								<select onchange="vpLinkToggleName()" id="vplink-linkType">
+	<option value="Project Link">Project Link</option>
+	<option value="Page URL">Page URL</option>
+</select>
+							</td>
+							<td style="font-size: 12px;" align="right">
+								<input onclick="javascript: vpLinkToggleName()" id="vplink-checkbox" type="checkbox" />
+								<label for="vplink-checkbox">with Name</label>							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<textarea id="vplink-text" style="width: 348px; height: 60px; border-color: #7EADD9; outline: none;"></textarea>				</td>
+			</tr>
+		</table>
+	</div>
+	<p class="PageTitle">
+		<span id="PageTitleText">
+			Entity Relationship Diagram - Class Diagram1 - ERD		</span>
+<a onclick="javascript: showVpLink('hospital-management-system.vpp://diagram/PrFAFdGFS_nyRQzh', 'Class Diagram1 - ERD\nhospital-management-system.vpp://diagram/PrFAFdGFS_nyRQzh', 'Class Diagram1 - ERD', this); return false;" style="padding-left: 16px; font-size: 12px" href="#"><img src="../images/icons/link.png" border="0"> link</a>	</p>
+	<div style="position: relative; padding-bottom: 20px;">
+		<table border="0" cellpadding="0" width="100%" cellspacing="0" style="position: absolute; top: 0; left: 0; z-index: 20;" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),hideLinkPopup(),hideReferencedBys();">
+			<tr>
+				<td>
+<span class="TableContent">Jump to:</span>					<select id="SelectShape" class="TableContent" onChange="scrollWin('diagram', this.value);hideLinkPopup();showSpotLight('diagram', this.value)">
+<option value="">Please select a model element</option>
+<option value="shape|1422.0|216.0|143.0|59.0|DBTable_x5lAFdGFS_nyRQ1t.html|DBTable_x5lAFdGFS_nyRQ1t.html|5DlAFdGFS_nyRQ2z" id="option5DlAFdGFS_nyRQ2z">Room_User : Entity</option>
+<option value="shape|958.0|705.0|180.0|59.0|DBTable_85lAFdGFS_nyRQ1k.html|DBTable_85lAFdGFS_nyRQ1k.html|uDlAFdGFS_nyRQ2w" id="optionuDlAFdGFS_nyRQ2w">Appointment_User : Entity</option>
+<option value="shape|904.0|611.0|149.0|59.0|DBTable_o5lAFdGFS_nyRQ1b.html|DBTable_o5lAFdGFS_nyRQ1b.html|kDlAFdGFS_nyRQ2t" id="optionkDlAFdGFS_nyRQ2t">Patient_User : Entity</option>
+<option value="shape|276.0|880.0|180.0|59.0|DBTable_jZlAFdGFS_nyRQ1M.html|DBTable_jZlAFdGFS_nyRQ1M.html|r9lAFdGFS_nyRQ2q" id="optionr9lAFdGFS_nyRQ2q">Patient_Appointment : Entity</option>
+<option value="shape|1199.0|96.0|174.0|95.0|DBTable_rplAFdGFS_nyRQ0j.html|DBTable_rplAFdGFS_nyRQ0j.html|19lAFdGFS_nyRQ2n" id="option19lAFdGFS_nyRQ2n">Report : Entity</option>
+<option value="shape|1067.0|318.0|288.0|257.0|DBTable_hplAFdGFS_nyRQ0W.html|DBTable_hplAFdGFS_nyRQ0W.html|69lAFdGFS_nyRQ2k" id="option69lAFdGFS_nyRQ2k">User : Entity</option>
+<option value="shape|804.0|867.0|282.0|131.0|DBTable_hplAFdGFS_nyRQ0Q.html|DBTable_hplAFdGFS_nyRQ0Q.html|s9lAFdGFS_nyRQ2h" id="options9lAFdGFS_nyRQ2h">Medication : Entity</option>
+<option value="shape|499.0|623.0|276.0|131.0|DBTable_6plAFdGFS_nyRQ0J.html|DBTable_6plAFdGFS_nyRQ0J.html|ndlAFdGFS_nyRQ2e" id="optionndlAFdGFS_nyRQ2e">Appointment : Entity</option>
+<option value="shape|876.0|2.0|282.0|95.0|DBTable_splAFdGFS_nyRQ0E.html|DBTable_splAFdGFS_nyRQ0E.html|pdlAFdGFS_nyRQ2b" id="optionpdlAFdGFS_nyRQ2b">Room : Entity</option>
+<option value="shape|667.0|300.0|191.0|131.0|DBTable_splAFdGFS_nyRQz8.html|DBTable_splAFdGFS_nyRQz8.html|2dlAFdGFS_nyRQ2Y" id="option2dlAFdGFS_nyRQ2Y">HospitalManagementSystem : Entity</option>
+<option value="shape|124.0|343.0|282.0|149.0|DBTable_wplAFdGFS_nyRQz1.html|DBTable_wplAFdGFS_nyRQz1.html|4dlAFdGFS_nyRQ2V" id="option4dlAFdGFS_nyRQ2V">Patient : Entity</option>
+<option value="shape|2.0|119.0|169.0|113.0|DBTable_pJlAFdGFS_nyRQzu.html|DBTable_pJlAFdGFS_nyRQzu.html|tNlAFdGFS_nyRQ2S" id="optiontNlAFdGFS_nyRQ2S">Billing : Entity</option>
+</select>				</td>
+			</tr>
+		</table>
+		<table border="0" cellpadding="0" width="100%" cellspacing="0" style="position: relative; top: 24;">
+			<tr>
+				<td>
+					<img id="diagram" src="../images/Class_Diagram1_ERD.png" usemap="#diagram_map" class="Image" width="1569" height="1002"/>
+					<map name="diagram_map">
+<area imageId="diagram" coords="1295.0, 575.0, 1295.0, 918.0, 1086.0, 918.0, 1086.0, 932.0, 1295.0, 932.0, 1295.0, 935.0, 1309.0, 935.0, 1309.0, 932.0, 1312.0, 932.0, 1312.0, 918.0, 1309.0, 918.0, 1309.0, 575.0" coords2="1295.0, 575.0, 1295.0, 918.0, 1086.0, 918.0, 1086.0, 932.0, 1295.0, 932.0, 1295.0, 935.0, 1309.0, 935.0, 1309.0, 932.0, 1312.0, 932.0, 1312.0, 918.0, 1309.0, 918.0, 1309.0, 575.0" shape="poly" alt="meresepkan:Relationship" id="areadiagram_map_jDlAFdGFS_nyRQ22_default" href="DBForeignKey_gFlAFdGFS_nyRQ2I.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="858.0, 346.0, 858.0, 360.0, 1067.0, 360.0, 1067.0, 346.0" coords2="858.0, 346.0, 858.0, 360.0, 1067.0, 360.0, 1067.0, 346.0" shape="poly" alt="manajemen6:Relationship" id="areadiagram_map_8jlAFdGFS_nyRQ27_default" href="DBForeignKey_75lAFdGFS_nyRQ2C.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="1243.0, 191.0, 1243.0, 318.0, 1257.0, 318.0, 1257.0, 191.0" coords2="1243.0, 191.0, 1243.0, 318.0, 1257.0, 318.0, 1257.0, 191.0" shape="poly" alt="membuat:Relationship" id="areadiagram_map_xjlAFdGFS_nyRQ3A_default" href="DBForeignKey_t5lAFdGFS_nyRQ18.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="271.0, 174.0, 271.0, 177.0, 171.0, 177.0, 171.0, 191.0, 271.0, 191.0, 271.0, 343.0, 285.0, 343.0, 285.0, 191.0, 288.0, 191.0, 288.0, 177.0, 285.0, 177.0, 285.0, 174.0" coords2="271.0, 174.0, 271.0, 177.0, 171.0, 177.0, 171.0, 191.0, 271.0, 191.0, 271.0, 343.0, 285.0, 343.0, 285.0, 191.0, 288.0, 191.0, 288.0, 177.0, 285.0, 177.0, 285.0, 174.0" shape="poly" alt="pembayaran:Relationship" id="areadiagram_map_tjlAFdGFS_nyRQ3F_default" href="DBForeignKey_t5lAFdGFS_nyRQ12.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="1486.0, 275.0, 1486.0, 435.0, 1355.0, 435.0, 1355.0, 449.0, 1486.0, 449.0, 1486.0, 452.0, 1500.0, 452.0, 1500.0, 449.0, 1503.0, 449.0, 1503.0, 435.0, 1500.0, 435.0, 1500.0, 275.0" coords2="1486.0, 275.0, 1486.0, 435.0, 1355.0, 435.0, 1355.0, 449.0, 1486.0, 449.0, 1486.0, 452.0, 1500.0, 452.0, 1500.0, 449.0, 1503.0, 449.0, 1503.0, 435.0, 1500.0, 435.0, 1500.0, 275.0" shape="poly" alt="ditugaskan ke2:Relationship" id="areadiagram_map_7jlAFdGFS_nyRQ3K_default" href="DBForeignKey_x5lAFdGFS_nyRQ1v.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="1489.0, 38.0, 1489.0, 41.0, 1158.0, 41.0, 1158.0, 55.0, 1489.0, 55.0, 1489.0, 216.0, 1503.0, 216.0, 1503.0, 55.0, 1506.0, 55.0, 1506.0, 41.0, 1503.0, 41.0, 1503.0, 38.0" coords2="1489.0, 38.0, 1489.0, 41.0, 1158.0, 41.0, 1158.0, 55.0, 1489.0, 55.0, 1489.0, 216.0, 1503.0, 216.0, 1503.0, 55.0, 1506.0, 55.0, 1506.0, 41.0, 1503.0, 41.0, 1503.0, 38.0" shape="poly" alt="ditugaskan ke:Relationship" id="areadiagram_map_gTlAFdGFS_nyRQ3O_default" href="DBForeignKey_x5lAFdGFS_nyRQ1u.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="1241.0, 575.0, 1241.0, 717.0, 1138.0, 717.0, 1138.0, 731.0, 1241.0, 731.0, 1241.0, 734.0, 1255.0, 734.0, 1255.0, 731.0, 1258.0, 731.0, 1258.0, 717.0, 1255.0, 717.0, 1255.0, 575.0" coords2="1241.0, 575.0, 1241.0, 717.0, 1138.0, 717.0, 1138.0, 731.0, 1241.0, 731.0, 1241.0, 734.0, 1255.0, 734.0, 1255.0, 731.0, 1258.0, 731.0, 1258.0, 717.0, 1255.0, 717.0, 1255.0, 575.0" shape="poly" alt="mempunyai2:Relationship" id="areadiagram_map_qTlAFdGFS_nyRQ3S_default" href="DBForeignKey_m5lAFdGFS_nyRQ1m.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="775.0, 718.0, 775.0, 732.0, 958.0, 732.0, 958.0, 718.0" coords2="775.0, 718.0, 775.0, 732.0, 958.0, 732.0, 958.0, 718.0" shape="poly" alt="mempunyai:Relationship" id="areadiagram_map_.TlAFdGFS_nyRQ3W_default" href="DBForeignKey_85lAFdGFS_nyRQ1l.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="1198.0, 575.0, 1198.0, 633.0, 1053.0, 633.0, 1053.0, 647.0, 1198.0, 647.0, 1198.0, 650.0, 1212.0, 650.0, 1212.0, 647.0, 1215.0, 647.0, 1215.0, 633.0, 1212.0, 633.0, 1212.0, 575.0" coords2="1198.0, 575.0, 1198.0, 633.0, 1053.0, 633.0, 1053.0, 647.0, 1198.0, 647.0, 1198.0, 650.0, 1212.0, 650.0, 1212.0, 647.0, 1215.0, 647.0, 1215.0, 633.0, 1212.0, 633.0, 1212.0, 575.0" shape="poly" alt="perawatan2:Relationship" id="areadiagram_map_lTlAFdGFS_nyRQ3a_default" href="DBForeignKey_o5lAFdGFS_nyRQ1d.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="361.0, 492.0, 361.0, 563.0, 358.0, 563.0, 358.0, 577.0, 361.0, 577.0, 361.0, 580.0, 375.0, 580.0, 375.0, 577.0, 981.0, 577.0, 981.0, 611.0, 995.0, 611.0, 995.0, 577.0, 998.0, 577.0, 998.0, 563.0, 995.0, 563.0, 995.0, 560.0, 981.0, 560.0, 981.0, 563.0, 375.0, 563.0, 375.0, 492.0" coords2="361.0, 492.0, 361.0, 563.0, 358.0, 563.0, 358.0, 577.0, 361.0, 577.0, 361.0, 580.0, 375.0, 580.0, 375.0, 577.0, 981.0, 577.0, 981.0, 611.0, 995.0, 611.0, 995.0, 577.0, 998.0, 577.0, 998.0, 563.0, 995.0, 563.0, 995.0, 560.0, 981.0, 560.0, 981.0, 563.0, 375.0, 563.0, 375.0, 492.0" shape="poly" alt="perawatan:Relationship" id="areadiagram_map_rTlAFdGFS_nyRQ3e_default" href="DBForeignKey_o5lAFdGFS_nyRQ1c.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="346.0, 38.0, 346.0, 41.0, 343.0, 41.0, 343.0, 55.0, 346.0, 55.0, 346.0, 343.0, 360.0, 343.0, 360.0, 55.0, 876.0, 55.0, 876.0, 41.0, 360.0, 41.0, 360.0, 38.0" coords2="346.0, 38.0, 346.0, 41.0, 343.0, 41.0, 343.0, 55.0, 346.0, 55.0, 346.0, 343.0, 360.0, 343.0, 360.0, 55.0, 876.0, 55.0, 876.0, 41.0, 360.0, 41.0, 360.0, 38.0" shape="poly" alt="menempati:Relationship" id="areadiagram_map_vTlAFdGFS_nyRQ3i_default" href="DBForeignKey_3ZlAFdGFS_nyRQ1V.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="396.0, 668.0, 396.0, 671.0, 393.0, 671.0, 393.0, 685.0, 396.0, 685.0, 396.0, 880.0, 410.0, 880.0, 410.0, 685.0, 499.0, 685.0, 499.0, 671.0, 410.0, 671.0, 410.0, 668.0" coords2="396.0, 668.0, 396.0, 671.0, 393.0, 671.0, 393.0, 685.0, 396.0, 685.0, 396.0, 880.0, 410.0, 880.0, 410.0, 685.0, 499.0, 685.0, 499.0, 671.0, 410.0, 671.0, 410.0, 668.0" shape="poly" alt="penjadwalan2:Relationship" id="areadiagram_map_4zlAFdGFS_nyRQ3n_default" href="DBForeignKey_jZlAFdGFS_nyRQ1O.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="308.0, 492.0, 308.0, 880.0, 322.0, 880.0, 322.0, 492.0" coords2="308.0, 492.0, 308.0, 880.0, 322.0, 880.0, 322.0, 492.0" shape="poly" alt="penjadwalan:Relationship" id="areadiagram_map_izlAFdGFS_nyRQ3r_default" href="DBForeignKey_jZlAFdGFS_nyRQ1N.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="595.0, 344.0, 595.0, 347.0, 592.0, 347.0, 592.0, 361.0, 595.0, 361.0, 595.0, 623.0, 609.0, 623.0, 609.0, 361.0, 667.0, 361.0, 667.0, 347.0, 609.0, 347.0, 609.0, 344.0" coords2="595.0, 344.0, 595.0, 347.0, 592.0, 347.0, 592.0, 361.0, 595.0, 361.0, 595.0, 623.0, 609.0, 623.0, 609.0, 361.0, 667.0, 361.0, 667.0, 347.0, 609.0, 347.0, 609.0, 344.0" shape="poly" alt="manajemen5:Relationship" id="areadiagram_map_2zlAFdGFS_nyRQ3v_default" href="DBForeignKey_5ZlAFdGFS_nyRQ1G.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="821.0, 431.0, 821.0, 867.0, 835.0, 867.0, 835.0, 431.0" coords2="821.0, 431.0, 821.0, 867.0, 835.0, 867.0, 835.0, 431.0" shape="poly" alt="manajemen4:Relationship" id="areadiagram_map_nzlAFdGFS_nyRQ30_default" href="DBForeignKey_5ZlAFdGFS_nyRQ1A.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="1010.0, 97.0, 1010.0, 168.0, 755.0, 168.0, 755.0, 165.0, 741.0, 165.0, 741.0, 168.0, 738.0, 168.0, 738.0, 182.0, 741.0, 182.0, 741.0, 300.0, 755.0, 300.0, 755.0, 182.0, 1010.0, 182.0, 1010.0, 185.0, 1024.0, 185.0, 1024.0, 182.0, 1027.0, 182.0, 1027.0, 168.0, 1024.0, 168.0, 1024.0, 97.0" coords2="1010.0, 97.0, 1010.0, 168.0, 755.0, 168.0, 755.0, 165.0, 741.0, 165.0, 741.0, 168.0, 738.0, 168.0, 738.0, 182.0, 741.0, 182.0, 741.0, 300.0, 755.0, 300.0, 755.0, 182.0, 1010.0, 182.0, 1010.0, 185.0, 1024.0, 185.0, 1024.0, 182.0, 1027.0, 182.0, 1027.0, 168.0, 1024.0, 168.0, 1024.0, 97.0" shape="poly" alt="manajemen3:Relationship" id="areadiagram_map_wLlAFdGFS_nyRQ35_default" href="DBForeignKey_uZlAFdGFS_nyRQ06.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="919.0, 392.0, 919.0, 395.0, 858.0, 395.0, 858.0, 409.0, 919.0, 409.0, 919.0, 504.0, 916.0, 504.0, 916.0, 518.0, 919.0, 518.0, 919.0, 521.0, 933.0, 521.0, 933.0, 518.0, 1067.0, 518.0, 1067.0, 504.0, 933.0, 504.0, 933.0, 409.0, 936.0, 409.0, 936.0, 395.0, 933.0, 395.0, 933.0, 392.0" coords2="919.0, 392.0, 919.0, 395.0, 858.0, 395.0, 858.0, 409.0, 919.0, 409.0, 919.0, 504.0, 916.0, 504.0, 916.0, 518.0, 919.0, 518.0, 919.0, 521.0, 933.0, 521.0, 933.0, 518.0, 1067.0, 518.0, 1067.0, 504.0, 933.0, 504.0, 933.0, 409.0, 936.0, 409.0, 936.0, 395.0, 933.0, 395.0, 933.0, 392.0" shape="poly" alt="manajemen2:Relationship" id="areadiagram_map_6LlAFdGFS_nyRQ3._default" href="DBForeignKey_yZlAFdGFS_nyRQ00.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="406.0, 423.0, 406.0, 437.0, 682.0, 437.0, 682.0, 431.0, 667.0, 431.0, 667.0, 423.0" coords2="406.0, 423.0, 406.0, 437.0, 682.0, 437.0, 682.0, 431.0, 667.0, 431.0, 667.0, 423.0" shape="poly" alt="manajemen:Relationship" id="areadiagram_map_1LlAFdGFS_nyRQ4D_default" href="DBForeignKey_kZlAFdGFS_nyRQ0s.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="1422, 216, 1565, 275" coords2="1422, 216, 1565, 275" shape="rect" alt="Room_User:Entity" id="areadiagram_map_5DlAFdGFS_nyRQ2z_default" href="DBTable_x5lAFdGFS_nyRQ1t.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="958, 705, 1138, 764" coords2="958, 705, 1138, 764" shape="rect" alt="Appointment_User:Entity" id="areadiagram_map_uDlAFdGFS_nyRQ2w_default" href="DBTable_85lAFdGFS_nyRQ1k.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="904, 611, 1053, 670" coords2="904, 611, 1053, 670" shape="rect" alt="Patient_User:Entity" id="areadiagram_map_kDlAFdGFS_nyRQ2t_default" href="DBTable_o5lAFdGFS_nyRQ1b.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="276, 880, 456, 939" coords2="276, 880, 456, 939" shape="rect" alt="Patient_Appointment:Entity" id="areadiagram_map_r9lAFdGFS_nyRQ2q_default" href="DBTable_jZlAFdGFS_nyRQ1M.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="1199, 96, 1373, 191" coords2="1199, 96, 1373, 191" shape="rect" alt="Report:Entity" id="areadiagram_map_19lAFdGFS_nyRQ2n_default" href="DBTable_rplAFdGFS_nyRQ0j.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="1067, 318, 1355, 575" coords2="1067, 318, 1355, 575" shape="rect" alt="User:Entity" id="areadiagram_map_69lAFdGFS_nyRQ2k_default" href="DBTable_hplAFdGFS_nyRQ0W.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="804, 867, 1086, 998" coords2="804, 867, 1086, 998" shape="rect" alt="Medication:Entity" id="areadiagram_map_s9lAFdGFS_nyRQ2h_default" href="DBTable_hplAFdGFS_nyRQ0Q.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="499, 623, 775, 754" coords2="499, 623, 775, 754" shape="rect" alt="Appointment:Entity" id="areadiagram_map_ndlAFdGFS_nyRQ2e_default" href="DBTable_6plAFdGFS_nyRQ0J.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="876, 2, 1158, 97" coords2="876, 2, 1158, 97" shape="rect" alt="Room:Entity" id="areadiagram_map_pdlAFdGFS_nyRQ2b_default" href="DBTable_splAFdGFS_nyRQ0E.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="667, 300, 858, 431" coords2="667, 300, 858, 431" shape="rect" alt="HospitalManagementSystem:Entity" id="areadiagram_map_2dlAFdGFS_nyRQ2Y_default" href="DBTable_splAFdGFS_nyRQz8.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="124, 343, 406, 492" coords2="124, 343, 406, 492" shape="rect" alt="Patient:Entity" id="areadiagram_map_4dlAFdGFS_nyRQ2V_default" href="DBTable_wplAFdGFS_nyRQz1.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="2, 119, 171, 232" coords2="2, 119, 171, 232" shape="rect" alt="Billing:Entity" id="areadiagram_map_tNlAFdGFS_nyRQ2S_default" href="DBTable_pJlAFdGFS_nyRQzu.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+</map>
+				</td>
+			</tr>
+		</table>
+		<p>
+		</p>
+	</div>
+	<p>
+	</p>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="Category">
+Database Tables			</td>
+		</tr>
+		<tr>
+			<td class="TableCellSpaceHolder5PxTall">
+			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td colSpan="4" class="TableHeaderLine">
+			</td>
+		</tr>
+		<tr>
+			<td colSpan="4" class="TableHeaderLine1">
+			</td>
+		</tr>
+		<tr class="TableHeader">
+			<td class="TableCellSpaceHolder10Px">
+			</td>
+			<td width="25%">
+<span class="TableHeaderText">Name</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td>
+<span class="TableHeaderText">Description</span>			</td>
+		</tr>
+		<tr>
+			<td colSpan="4" class="TableHeaderLine2">
+			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Entity.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Entity.png'); background-repeat: no-repeat;">
+					</div>
+&nbsp;<a href="DBTable_x5lAFdGFS_nyRQ1t.html" class="ItemLink">Room_User : Entity</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent"></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Entity.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Entity.png'); background-repeat: no-repeat;">
+					</div>
+&nbsp;<a href="DBTable_85lAFdGFS_nyRQ1k.html" class="ItemLink">Appointment_User : Entity</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent"></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Entity.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Entity.png'); background-repeat: no-repeat;">
+					</div>
+&nbsp;<a href="DBTable_o5lAFdGFS_nyRQ1b.html" class="ItemLink">Patient_User : Entity</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent"></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Entity.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Entity.png'); background-repeat: no-repeat;">
+					</div>
+&nbsp;<a href="DBTable_jZlAFdGFS_nyRQ1M.html" class="ItemLink">Patient_Appointment : Entity</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent"></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Entity.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Entity.png'); background-repeat: no-repeat;">
+					</div>
+&nbsp;<a href="DBTable_rplAFdGFS_nyRQ0j.html" class="ItemLink">Report : Entity</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent"></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Entity.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Entity.png'); background-repeat: no-repeat;">
+					</div>
+&nbsp;<a href="DBTable_hplAFdGFS_nyRQ0W.html" class="ItemLink">User : Entity</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent"></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Entity.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Entity.png'); background-repeat: no-repeat;">
+					</div>
+&nbsp;<a href="DBTable_hplAFdGFS_nyRQ0Q.html" class="ItemLink">Medication : Entity</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent"></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Entity.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Entity.png'); background-repeat: no-repeat;">
+					</div>
+&nbsp;<a href="DBTable_6plAFdGFS_nyRQ0J.html" class="ItemLink">Appointment : Entity</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent"></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Entity.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Entity.png'); background-repeat: no-repeat;">
+					</div>
+&nbsp;<a href="DBTable_splAFdGFS_nyRQ0E.html" class="ItemLink">Room : Entity</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent"></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Entity.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Entity.png'); background-repeat: no-repeat;">
+					</div>
+&nbsp;<a href="DBTable_splAFdGFS_nyRQz8.html" class="ItemLink">HospitalManagementSystem : Entity</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent"></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Entity.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Entity.png'); background-repeat: no-repeat;">
+					</div>
+&nbsp;<a href="DBTable_wplAFdGFS_nyRQz1.html" class="ItemLink">Patient : Entity</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent"></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Entity.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Entity.png'); background-repeat: no-repeat;">
+					</div>
+&nbsp;<a href="DBTable_pJlAFdGFS_nyRQzu.html" class="ItemLink">Billing : Entity</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent"></span>			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="TableCellSpaceHolder1PxTall">
+			</td>
+		</tr>
+		<tr>
+			<td class="TableFooter">
+			</td>
+		</tr>
+	</table>
+	<p>
+	</p>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="Category">
+Room_User Table			</td>
+		</tr>
+		<tr>
+			<td class="TableCellSpaceHolder5PxTall">
+			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td colSpan="10" class="TableHeaderLine">
+			</td>
+		</tr>
+		<tr>
+			<td colSpan="10" class="TableHeaderLine1">
+			</td>
+		</tr>
+		<tr class="TableHeader">
+			<td class="TableCellSpaceHolder10Px">
+			</td>
+			<td width="15%">
+<span class="TableHeaderText">Column Name</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="10%">
+<span class="TableHeaderText">Data Type</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="7%">
+<span class="TableHeaderText">PK / FK</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="5%">
+<span class="TableHeaderText">Nullable</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="*">
+<span class="TableHeaderText">Description</span>			</td>
+		</tr>
+		<tr>
+			<td colSpan="10" class="TableHeaderLine2">
+			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_x5lAFdGFS_nyRQ1t.html#x5lAFdGFS_nyRQ1w" class="ItemLink">RoomID</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">integer(10)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+PK / FK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_x5lAFdGFS_nyRQ1t.html#x5lAFdGFS_nyRQ1y" class="ItemLink">UserID</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">integer(10)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+PK / FK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="TableCellSpaceHolder1PxTall">
+			</td>
+		</tr>
+		<tr>
+			<td class="TableFooter">
+			</td>
+		</tr>
+	</table>
+	<p>
+	</p>
+	<p>
+	</p>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="Category">
+Appointment_User Table			</td>
+		</tr>
+		<tr>
+			<td class="TableCellSpaceHolder5PxTall">
+			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td colSpan="10" class="TableHeaderLine">
+			</td>
+		</tr>
+		<tr>
+			<td colSpan="10" class="TableHeaderLine1">
+			</td>
+		</tr>
+		<tr class="TableHeader">
+			<td class="TableCellSpaceHolder10Px">
+			</td>
+			<td width="15%">
+<span class="TableHeaderText">Column Name</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="10%">
+<span class="TableHeaderText">Data Type</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="7%">
+<span class="TableHeaderText">PK / FK</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="5%">
+<span class="TableHeaderText">Nullable</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="*">
+<span class="TableHeaderText">Description</span>			</td>
+		</tr>
+		<tr>
+			<td colSpan="10" class="TableHeaderLine2">
+			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_85lAFdGFS_nyRQ1k.html#m5lAFdGFS_nyRQ1n" class="ItemLink">AppointmentID</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">integer(10)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+PK / FK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_85lAFdGFS_nyRQ1k.html#m5lAFdGFS_nyRQ1p" class="ItemLink">UserID</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">integer(10)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+PK / FK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="TableCellSpaceHolder1PxTall">
+			</td>
+		</tr>
+		<tr>
+			<td class="TableFooter">
+			</td>
+		</tr>
+	</table>
+	<p>
+	</p>
+	<p>
+	</p>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="Category">
+Patient_User Table			</td>
+		</tr>
+		<tr>
+			<td class="TableCellSpaceHolder5PxTall">
+			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td colSpan="10" class="TableHeaderLine">
+			</td>
+		</tr>
+		<tr>
+			<td colSpan="10" class="TableHeaderLine1">
+			</td>
+		</tr>
+		<tr class="TableHeader">
+			<td class="TableCellSpaceHolder10Px">
+			</td>
+			<td width="15%">
+<span class="TableHeaderText">Column Name</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="10%">
+<span class="TableHeaderText">Data Type</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="7%">
+<span class="TableHeaderText">PK / FK</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="5%">
+<span class="TableHeaderText">Nullable</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="*">
+<span class="TableHeaderText">Description</span>			</td>
+		</tr>
+		<tr>
+			<td colSpan="10" class="TableHeaderLine2">
+			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_o5lAFdGFS_nyRQ1b.html#o5lAFdGFS_nyRQ1e" class="ItemLink">PatientID</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">integer(10)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+PK / FK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_o5lAFdGFS_nyRQ1b.html#85lAFdGFS_nyRQ1g" class="ItemLink">UserID</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">integer(10)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+PK / FK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="TableCellSpaceHolder1PxTall">
+			</td>
+		</tr>
+		<tr>
+			<td class="TableFooter">
+			</td>
+		</tr>
+	</table>
+	<p>
+	</p>
+	<p>
+	</p>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="Category">
+Patient_Appointment Table			</td>
+		</tr>
+		<tr>
+			<td class="TableCellSpaceHolder5PxTall">
+			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td colSpan="10" class="TableHeaderLine">
+			</td>
+		</tr>
+		<tr>
+			<td colSpan="10" class="TableHeaderLine1">
+			</td>
+		</tr>
+		<tr class="TableHeader">
+			<td class="TableCellSpaceHolder10Px">
+			</td>
+			<td width="15%">
+<span class="TableHeaderText">Column Name</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="10%">
+<span class="TableHeaderText">Data Type</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="7%">
+<span class="TableHeaderText">PK / FK</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="5%">
+<span class="TableHeaderText">Nullable</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="*">
+<span class="TableHeaderText">Description</span>			</td>
+		</tr>
+		<tr>
+			<td colSpan="10" class="TableHeaderLine2">
+			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_jZlAFdGFS_nyRQ1M.html#3ZlAFdGFS_nyRQ1P" class="ItemLink">PatientID</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">integer(10)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+PK / FK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_jZlAFdGFS_nyRQ1M.html#3ZlAFdGFS_nyRQ1R" class="ItemLink">AppointmentID</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">integer(10)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+PK / FK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="TableCellSpaceHolder1PxTall">
+			</td>
+		</tr>
+		<tr>
+			<td class="TableFooter">
+			</td>
+		</tr>
+	</table>
+	<p>
+	</p>
+	<p>
+	</p>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="Category">
+Report Table			</td>
+		</tr>
+		<tr>
+			<td class="TableCellSpaceHolder5PxTall">
+			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td colSpan="10" class="TableHeaderLine">
+			</td>
+		</tr>
+		<tr>
+			<td colSpan="10" class="TableHeaderLine1">
+			</td>
+		</tr>
+		<tr class="TableHeader">
+			<td class="TableCellSpaceHolder10Px">
+			</td>
+			<td width="15%">
+<span class="TableHeaderText">Column Name</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="10%">
+<span class="TableHeaderText">Data Type</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="7%">
+<span class="TableHeaderText">PK / FK</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="5%">
+<span class="TableHeaderText">Nullable</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="*">
+<span class="TableHeaderText">Description</span>			</td>
+		</tr>
+		<tr>
+			<td colSpan="10" class="TableHeaderLine2">
+			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_rplAFdGFS_nyRQ0j.html#rplAFdGFS_nyRQ0l" class="ItemLink">ID</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">integer(10)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+PK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_rplAFdGFS_nyRQ0j.html#75lAFdGFS_nyRQ1." class="ItemLink">UserID</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">integer(10)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+FK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_rplAFdGFS_nyRQ0j.html#rplAFdGFS_nyRQ0m" class="ItemLink">ReportID</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">integer(10)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_rplAFdGFS_nyRQ0j.html#_plAFdGFS_nyRQ0n" class="ItemLink">Content</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">varchar(255)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Yes			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="TableCellSpaceHolder1PxTall">
+			</td>
+		</tr>
+		<tr>
+			<td class="TableFooter">
+			</td>
+		</tr>
+	</table>
+	<p>
+	</p>
+	<p>
+	</p>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="Category">
+User Table			</td>
+		</tr>
+		<tr>
+			<td class="TableCellSpaceHolder5PxTall">
+			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td colSpan="10" class="TableHeaderLine">
+			</td>
+		</tr>
+		<tr>
+			<td colSpan="10" class="TableHeaderLine1">
+			</td>
+		</tr>
+		<tr class="TableHeader">
+			<td class="TableCellSpaceHolder10Px">
+			</td>
+			<td width="15%">
+<span class="TableHeaderText">Column Name</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="10%">
+<span class="TableHeaderText">Data Type</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="7%">
+<span class="TableHeaderText">PK / FK</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="5%">
+<span class="TableHeaderText">Nullable</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="*">
+<span class="TableHeaderText">Description</span>			</td>
+		</tr>
+		<tr>
+			<td colSpan="10" class="TableHeaderLine2">
+			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_hplAFdGFS_nyRQ0W.html#1plAFdGFS_nyRQ0Y" class="ItemLink">ID</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">integer(10)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+PK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_hplAFdGFS_nyRQ0W.html#75lAFdGFS_nyRQ2E" class="ItemLink">HospitalManagementSystemID2</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">integer(10)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+FK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_hplAFdGFS_nyRQ0W.html#uZlAFdGFS_nyRQ02" class="ItemLink">HospitalManagementSystemID</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">integer(10)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+FK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Yes			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_hplAFdGFS_nyRQ0W.html#1plAFdGFS_nyRQ0Z" class="ItemLink">UserID</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">integer(10)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_hplAFdGFS_nyRQ0W.html#1plAFdGFS_nyRQ0a" class="ItemLink">Username</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">varchar(255)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Yes			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_hplAFdGFS_nyRQ0W.html#1plAFdGFS_nyRQ0b" class="ItemLink">Password</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">varchar(255)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Yes			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_hplAFdGFS_nyRQ0W.html#1plAFdGFS_nyRQ0c" class="ItemLink">DoctorID</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">integer(10)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Yes			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_hplAFdGFS_nyRQ0W.html#1plAFdGFS_nyRQ0d" class="ItemLink">Name</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">varchar(255)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Yes			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_hplAFdGFS_nyRQ0W.html#1plAFdGFS_nyRQ0e" class="ItemLink">Specialization</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">varchar(255)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Yes			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_hplAFdGFS_nyRQ0W.html#rplAFdGFS_nyRQ0f" class="ItemLink">StaffID</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">integer(10)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Yes			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_hplAFdGFS_nyRQ0W.html#rplAFdGFS_nyRQ0g" class="ItemLink">Username2</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">varchar(255)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Yes			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_hplAFdGFS_nyRQ0W.html#rplAFdGFS_nyRQ0h" class="ItemLink">Password2</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">varchar(255)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Yes			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_hplAFdGFS_nyRQ0W.html#rplAFdGFS_nyRQ0i" class="ItemLink">Discriminator</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">varchar(255)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="TableCellSpaceHolder1PxTall">
+			</td>
+		</tr>
+		<tr>
+			<td class="TableFooter">
+			</td>
+		</tr>
+	</table>
+	<p>
+	</p>
+	<p>
+	</p>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="Category">
+Medication Table			</td>
+		</tr>
+		<tr>
+			<td class="TableCellSpaceHolder5PxTall">
+			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td colSpan="10" class="TableHeaderLine">
+			</td>
+		</tr>
+		<tr>
+			<td colSpan="10" class="TableHeaderLine1">
+			</td>
+		</tr>
+		<tr class="TableHeader">
+			<td class="TableCellSpaceHolder10Px">
+			</td>
+			<td width="15%">
+<span class="TableHeaderText">Column Name</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="10%">
+<span class="TableHeaderText">Data Type</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="7%">
+<span class="TableHeaderText">PK / FK</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="5%">
+<span class="TableHeaderText">Nullable</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="*">
+<span class="TableHeaderText">Description</span>			</td>
+		</tr>
+		<tr>
+			<td colSpan="10" class="TableHeaderLine2">
+			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_hplAFdGFS_nyRQ0Q.html#hplAFdGFS_nyRQ0S" class="ItemLink">ID</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">integer(10)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+PK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_hplAFdGFS_nyRQ0Q.html#gFlAFdGFS_nyRQ2K" class="ItemLink">UserID</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">integer(10)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+FK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_hplAFdGFS_nyRQ0Q.html#5ZlAFdGFS_nyRQ1C" class="ItemLink">HospitalManagementSystemID</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">integer(10)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+FK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_hplAFdGFS_nyRQ0Q.html#hplAFdGFS_nyRQ0T" class="ItemLink">MedicationID</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">integer(10)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_hplAFdGFS_nyRQ0Q.html#hplAFdGFS_nyRQ0U" class="ItemLink">Name</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">varchar(255)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Yes			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_hplAFdGFS_nyRQ0Q.html#hplAFdGFS_nyRQ0V" class="ItemLink">Dosage</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">varchar(255)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Yes			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="TableCellSpaceHolder1PxTall">
+			</td>
+		</tr>
+		<tr>
+			<td class="TableFooter">
+			</td>
+		</tr>
+	</table>
+	<p>
+	</p>
+	<p>
+	</p>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="Category">
+Appointment Table			</td>
+		</tr>
+		<tr>
+			<td class="TableCellSpaceHolder5PxTall">
+			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td colSpan="10" class="TableHeaderLine">
+			</td>
+		</tr>
+		<tr>
+			<td colSpan="10" class="TableHeaderLine1">
+			</td>
+		</tr>
+		<tr class="TableHeader">
+			<td class="TableCellSpaceHolder10Px">
+			</td>
+			<td width="15%">
+<span class="TableHeaderText">Column Name</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="10%">
+<span class="TableHeaderText">Data Type</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="7%">
+<span class="TableHeaderText">PK / FK</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="5%">
+<span class="TableHeaderText">Nullable</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="*">
+<span class="TableHeaderText">Description</span>			</td>
+		</tr>
+		<tr>
+			<td colSpan="10" class="TableHeaderLine2">
+			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_6plAFdGFS_nyRQ0J.html#6plAFdGFS_nyRQ0L" class="ItemLink">ID</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">integer(10)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+PK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_6plAFdGFS_nyRQ0J.html#jZlAFdGFS_nyRQ1I" class="ItemLink">HospitalManagementSystemID</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">integer(10)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+FK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_6plAFdGFS_nyRQ0J.html#6plAFdGFS_nyRQ0M" class="ItemLink">AppointmentID</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">integer(10)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_6plAFdGFS_nyRQ0J.html#6plAFdGFS_nyRQ0N" class="ItemLink">Doctor</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">integer(10)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Yes			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_6plAFdGFS_nyRQ0J.html#6plAFdGFS_nyRQ0O" class="ItemLink">Patient</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">integer(10)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Yes			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_6plAFdGFS_nyRQ0J.html#hplAFdGFS_nyRQ0P" class="ItemLink">DateTime</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">integer(10)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="TableCellSpaceHolder1PxTall">
+			</td>
+		</tr>
+		<tr>
+			<td class="TableFooter">
+			</td>
+		</tr>
+	</table>
+	<p>
+	</p>
+	<p>
+	</p>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="Category">
+Room Table			</td>
+		</tr>
+		<tr>
+			<td class="TableCellSpaceHolder5PxTall">
+			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td colSpan="10" class="TableHeaderLine">
+			</td>
+		</tr>
+		<tr>
+			<td colSpan="10" class="TableHeaderLine1">
+			</td>
+		</tr>
+		<tr class="TableHeader">
+			<td class="TableCellSpaceHolder10Px">
+			</td>
+			<td width="15%">
+<span class="TableHeaderText">Column Name</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="10%">
+<span class="TableHeaderText">Data Type</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="7%">
+<span class="TableHeaderText">PK / FK</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="5%">
+<span class="TableHeaderText">Nullable</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="*">
+<span class="TableHeaderText">Description</span>			</td>
+		</tr>
+		<tr>
+			<td colSpan="10" class="TableHeaderLine2">
+			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_splAFdGFS_nyRQ0E.html#6plAFdGFS_nyRQ0G" class="ItemLink">ID</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">integer(10)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+PK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_splAFdGFS_nyRQ0E.html#5ZlAFdGFS_nyRQ08" class="ItemLink">HospitalManagementSystemID</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">integer(10)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+FK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_splAFdGFS_nyRQ0E.html#6plAFdGFS_nyRQ0H" class="ItemLink">RoomID</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">integer(10)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_splAFdGFS_nyRQ0E.html#6plAFdGFS_nyRQ0I" class="ItemLink">RoomType</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">varchar(255)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Yes			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="TableCellSpaceHolder1PxTall">
+			</td>
+		</tr>
+		<tr>
+			<td class="TableFooter">
+			</td>
+		</tr>
+	</table>
+	<p>
+	</p>
+	<p>
+	</p>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="Category">
+HospitalManagementSystem Table			</td>
+		</tr>
+		<tr>
+			<td class="TableCellSpaceHolder5PxTall">
+			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td colSpan="10" class="TableHeaderLine">
+			</td>
+		</tr>
+		<tr>
+			<td colSpan="10" class="TableHeaderLine1">
+			</td>
+		</tr>
+		<tr class="TableHeader">
+			<td class="TableCellSpaceHolder10Px">
+			</td>
+			<td width="15%">
+<span class="TableHeaderText">Column Name</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="10%">
+<span class="TableHeaderText">Data Type</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="7%">
+<span class="TableHeaderText">PK / FK</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="5%">
+<span class="TableHeaderText">Nullable</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="*">
+<span class="TableHeaderText">Description</span>			</td>
+		</tr>
+		<tr>
+			<td colSpan="10" class="TableHeaderLine2">
+			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_splAFdGFS_nyRQz8.html#splAFdGFS_nyRQz." class="ItemLink">ID</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">integer(10)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+PK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_splAFdGFS_nyRQz8.html#splAFdGFS_nyRQz_" class="ItemLink">Doctors</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">integer(10)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Yes			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_splAFdGFS_nyRQz8.html#splAFdGFS_nyRQ0A" class="ItemLink">Patients</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">integer(10)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Yes			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_splAFdGFS_nyRQz8.html#splAFdGFS_nyRQ0B" class="ItemLink">Rooms</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">integer(10)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Yes			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_splAFdGFS_nyRQz8.html#splAFdGFS_nyRQ0C" class="ItemLink">Medications</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">integer(10)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Yes			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_splAFdGFS_nyRQz8.html#splAFdGFS_nyRQ0D" class="ItemLink">Appointments</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">integer(10)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Yes			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="TableCellSpaceHolder1PxTall">
+			</td>
+		</tr>
+		<tr>
+			<td class="TableFooter">
+			</td>
+		</tr>
+	</table>
+	<p>
+	</p>
+	<p>
+	</p>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="Category">
+Patient Table			</td>
+		</tr>
+		<tr>
+			<td class="TableCellSpaceHolder5PxTall">
+			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td colSpan="10" class="TableHeaderLine">
+			</td>
+		</tr>
+		<tr>
+			<td colSpan="10" class="TableHeaderLine1">
+			</td>
+		</tr>
+		<tr class="TableHeader">
+			<td class="TableCellSpaceHolder10Px">
+			</td>
+			<td width="15%">
+<span class="TableHeaderText">Column Name</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="10%">
+<span class="TableHeaderText">Data Type</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="7%">
+<span class="TableHeaderText">PK / FK</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="5%">
+<span class="TableHeaderText">Nullable</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="*">
+<span class="TableHeaderText">Description</span>			</td>
+		</tr>
+		<tr>
+			<td colSpan="10" class="TableHeaderLine2">
+			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_wplAFdGFS_nyRQz1.html#wplAFdGFS_nyRQz3" class="ItemLink">ID</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">integer(10)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+PK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_wplAFdGFS_nyRQz1.html#3ZlAFdGFS_nyRQ1X" class="ItemLink">RoomID</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">integer(10)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+FK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_wplAFdGFS_nyRQz1.html#kZlAFdGFS_nyRQ0v" class="ItemLink">HospitalManagementSystemID</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">integer(10)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+FK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_wplAFdGFS_nyRQz1.html#wplAFdGFS_nyRQz4" class="ItemLink">PatientID</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">integer(10)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_wplAFdGFS_nyRQz1.html#wplAFdGFS_nyRQz5" class="ItemLink">Name</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">varchar(255)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Yes			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_wplAFdGFS_nyRQz1.html#wplAFdGFS_nyRQz6" class="ItemLink">DateOfBirth</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">integer(10)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_wplAFdGFS_nyRQz1.html#wplAFdGFS_nyRQz7" class="ItemLink">ContactNumber</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">varchar(255)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Yes			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="TableCellSpaceHolder1PxTall">
+			</td>
+		</tr>
+		<tr>
+			<td class="TableFooter">
+			</td>
+		</tr>
+	</table>
+	<p>
+	</p>
+	<p>
+	</p>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="Category">
+Billing Table			</td>
+		</tr>
+		<tr>
+			<td class="TableCellSpaceHolder5PxTall">
+			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td colSpan="10" class="TableHeaderLine">
+			</td>
+		</tr>
+		<tr>
+			<td colSpan="10" class="TableHeaderLine1">
+			</td>
+		</tr>
+		<tr class="TableHeader">
+			<td class="TableCellSpaceHolder10Px">
+			</td>
+			<td width="15%">
+<span class="TableHeaderText">Column Name</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="10%">
+<span class="TableHeaderText">Data Type</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="7%">
+<span class="TableHeaderText">PK / FK</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="5%">
+<span class="TableHeaderText">Nullable</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="*">
+<span class="TableHeaderText">Description</span>			</td>
+		</tr>
+		<tr>
+			<td colSpan="10" class="TableHeaderLine2">
+			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_pJlAFdGFS_nyRQzu.html#nJlAFdGFS_nyRQzx" class="ItemLink">ID</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">integer(10)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+PK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_pJlAFdGFS_nyRQzu.html#t5lAFdGFS_nyRQ14" class="ItemLink">PatientID</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">integer(10)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+FK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_pJlAFdGFS_nyRQzu.html#nJlAFdGFS_nyRQzy" class="ItemLink">BillID</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">integer(10)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_pJlAFdGFS_nyRQzu.html#nJlAFdGFS_nyRQzz" class="ItemLink">Patient</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">integer(10)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Yes			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_pJlAFdGFS_nyRQzu.html#wplAFdGFS_nyRQz0" class="ItemLink">Amount</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">integer(10)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="TableCellSpaceHolder1PxTall">
+			</td>
+		</tr>
+		<tr>
+			<td class="TableFooter">
+			</td>
+		</tr>
+	</table>
+	<p>
+	</p>
+	<div style="height: 20px">
+	</div>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="FooterLine">
+			</td>
+		</tr>
+	</table>
+	<div class="HeaderText">
+		hospital-management-system	</div>
+</body>
+</html>
